@@ -1,0 +1,20 @@
+package com.example.kafka.model;
+
+public enum OrderStatus {
+    PENDING,
+    CONFIRMED,
+    VALIDATED,
+    INVENTORY_RESERVED,
+    PAYMENT_PROCESSING,
+    PAYMENT_COMPLETED,
+    PAYMENT_FAILED,
+    PREPARING,
+    READY_TO_SHIP,
+    SHIPPED,
+    IN_TRANSIT,
+    OUT_FOR_DELIVERY,
+    DELIVERED,
+    CANCELLED,
+    REFUNDED,
+    RETURNED
+}
