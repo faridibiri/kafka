@@ -69,7 +69,7 @@ public class OrderAnalyticsStreams {
                 .filter((key, event) -> event != null && event.has("newStatus"))
                 .groupBy(
                         (key, event) -> event.get("newStatus").asText(),
-                        Grouped.with(Serdes.String(), Serdes.String())
+                        Grouped.with(Serdes.String(), new JsonSerde<>(JsonNode.class, objectMapper))
                 )
                 .windowedBy(TimeWindows.ofSizeWithNoGrace(Duration.ofMinutes(5)))
                 .count(Materialized.as("order-status-counts-store"))
@@ -141,7 +141,7 @@ public class OrderAnalyticsStreams {
                 .filter((key, order) -> order != null && order.has("totalAmount"))
                 .groupBy(
                         (key, order) -> "TOTAL_REVENUE",
-                        Grouped.with(Serdes.String(), Serdes.String())
+                        Grouped.with(Serdes.String(), new JsonSerde<>(JsonNode.class, objectMapper))
                 )
                 .windowedBy(TimeWindows.ofSizeWithNoGrace(Duration.ofMinutes(10)))
                 .aggregate(
@@ -182,7 +182,7 @@ public class OrderAnalyticsStreams {
                 .filter((key, order) -> order != null && order.has("customerId"))
                 .groupBy(
                         (key, order) -> order.get("customerId").asText(),
-                        Grouped.with(Serdes.String(), Serdes.String())
+                        Grouped.with(Serdes.String(), new JsonSerde<>(JsonNode.class, objectMapper))
                 )
                 .count(Materialized.as("orders-by-customer-store"))
                 .toStream()
