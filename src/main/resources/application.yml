@@ -4,6 +4,10 @@ spring:
 
   kafka:
     bootstrap-servers: localhost:9092
+    admin:
+      fail-fast: false
+      properties:
+        request.timeout.ms: 30000
 
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
