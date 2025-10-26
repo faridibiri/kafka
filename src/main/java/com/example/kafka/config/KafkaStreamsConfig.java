@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@EnableKafkaStreams
 public class KafkaStreamsConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")

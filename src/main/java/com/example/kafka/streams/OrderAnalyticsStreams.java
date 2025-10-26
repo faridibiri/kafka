@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-@Component
 public class OrderAnalyticsStreams {
 
     private final ObjectMapper objectMapper;
