@@ -83,7 +83,7 @@ public class OrderConsumer {
             containerFactory = "orderKafkaListenerContainerFactory"
     )
     public void consumeOrderShipped(ConsumerRecord<String, Order> record) {
-        Order order = record.getValue();
+        Order order = record.value();
 
         log.info("📦 Order shipped notification received: orderId={}, customer={}",
                 order.getOrderId(), order.getCustomerName());
